@@ -48,3 +48,4 @@ docker build \
     -f Dockerfile.nginx-alpine \
     --build-arg=IMAGE=nginx:1.21.6-alpine .
 ```
+
