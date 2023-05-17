@@ -10,11 +10,11 @@
 ```
 
 
-## 在 Nginx 中支持 OpenTelemetry
+## 1. 在 Nginx 中支持 OpenTelemetry
 
 在项目 [Nginx-Otel-Demo](https://github.com/tangx/nginx-otel-demo) 中已经有详细描述， 可以跳转参考。
 
-## 在 Nginx Ingress Controller 中支持 OpenTelemetry
+## 2. 在 Nginx Ingress Controller 中支持 OpenTelemetry
 
 在 Nginx Ingress Controller 中， 支持的第三方 [OpenTelemetry 插件](https://kubernetes.github.io/ingress-nginx/user-guide/third-party-addons/opentelemetry/) 
 
@@ -28,3 +28,23 @@ load_module /modules_mount/etc/nginx/modules/otel/otel_ngx_module.so;
 
 其他配置方法， 参考 Nginx Ingress Controller 官方文档。
 
+
+## 3. Nginx 编译对应的 otel_ngx_module.so 
+
+已经准备好了对应的 Dockerfile
+
+1. nginx-debian: Dockerfile.nginx-debian
+2. nginx-alpine: Dockerfile.nginx-alpine
+
+```bash
+docker build \
+    -t example.com/library/nginx-otel:1.24.0-debian \
+    -f Dockerfile.nginx-debian \
+    --build-arg=IMAGE=nginx:1.24.0-debian .
+
+
+docker build \
+    -t example.com/library/nginx-otel:1.21.6-alpine \
+    -f Dockerfile.nginx-alpine \
+    --build-arg=IMAGE=nginx:1.21.6-alpine .
+```
