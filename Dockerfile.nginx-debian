@@ -1,4 +1,4 @@
-ARG IMAGE=nginx:1.24.0-debian11
+ARG IMAGE=nginx:1.24.0-bullseye
 
 ## builder
 FROM ${IMAGE} AS builder
